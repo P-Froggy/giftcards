@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include giftcards *.css
+recursive-include giftcards *.csv
+recursive-include giftcards *.html
+recursive-include giftcards *.ico
+recursive-include giftcards *.js
+recursive-include giftcards *.json
+recursive-include giftcards *.md
+recursive-include giftcards *.png
+recursive-include giftcards *.py
+recursive-include giftcards *.svg
+recursive-include giftcards *.txt
+recursive-exclude giftcards *.pyc

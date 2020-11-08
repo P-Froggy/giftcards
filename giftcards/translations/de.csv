@@ -1,0 +1,35 @@
+Allow partial redemption,Teileinlösung zulassen
+Buying Address,Käufer-Adresse
+Buying Contact,Käufer-Kontakt
+Buying Customer,Kaufender Kunde
+Create and manage gift cards.,Geschenkkarten erstellen und verwalten.
+Current value (percent),Aktueller Wert (Prozent)
+Gift Card Template,Geschenkkarten-Vorlage
+Gift Card Text,Geschenkkarten-Text
+Gift Card has been paid by the customer,Die Geschenkkarte wurde vom Kunden bezahlt
+GiftCards,Geschenkkarten
+Has received,Hat erhalten
+Is stopped,Ist angehalten
+Multi Purpose,Mehrzweck
+Posting date,Ausstellungsdatum
+Receiving Address,Empfangsadresse
+Receiving Contact,Empfangender Kontakt
+Receiving Customer,Empfangender Kunde
+Redeem,Einlösen
+Redeemed Value,Eingelöster Wert
+Redeem the full outstanding value of {0} {1} for this gift card?,Den vollen ausstehenden Wert von {0} {1} für diese Geschenkkarte einlösen?
+Redeemed,Eingelöst
+Redeemed value cannot be greater than the current value.,Eingelöster Wert kann nicht größer als der aktuelle Wert sein.
+Redemption date,Einlösungsdatum
+Single Purpose,Einzweck
+Target Value,Zielwert
+Target value must be a positive number.,Der Zielwert muss eine positive Zahl sein.
+The Gift Card has been received by or is sent to the customer.,Der Kunde hat die Geschenkkarte erhalten oder sie wurde an ihn versendet.
+The amount that should be redeemed.,Einzulösender Betrag.
+Unpaid & Unsent,Unbezahlt & Ungesendet
+Unsent,Ungesendet
+Update Status,Status aktualisieren
+Valid To,Gültig bis
+Valid from date has to be smaller than valid to date.,Das Gültig-ab-Datum muss kleiner als das Gültig-bis-Datum sein.
+Valid to date has to be in the future.,Das Gültig-bis-Datum muss in der Zukunft liegen.
+Validity (in years),Gültigkeit (in Jahren)

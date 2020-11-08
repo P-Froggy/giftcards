@@ -1,0 +1,131 @@
+{
+ "actions": [],
+ "autoname": "Prompt",
+ "creation": "2020-11-04 01:52:49.032076",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "type",
+  "value_section",
+  "value",
+  "column_break_4",
+  "currency",
+  "settings_section",
+  "validity_years",
+  "column_break_10",
+  "enabled",
+  "allow_partial_redemption",
+  "section_break_8",
+  "gift_card_text",
+  "print_format"
+ ],
+ "fields": [
+  {
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Type",
+   "options": "Single Purpose\nMulti Purpose",
+   "reqd": 1
+  },
+  {
+   "fieldname": "value_section",
+   "fieldtype": "Section Break",
+   "label": "Value"
+  },
+  {
+   "fieldname": "value",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Value",
+   "options": "Currency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Currency",
+   "options": "Currency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "settings_section",
+   "fieldtype": "Section Break",
+   "label": "Settings"
+  },
+  {
+   "default": "0",
+   "fieldname": "allow_partial_redemption",
+   "fieldtype": "Check",
+   "label": "Allow partial redemption"
+  },
+  {
+   "fieldname": "section_break_8",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "gift_card_text",
+   "fieldtype": "Text Editor",
+   "label": "Gift Card Text"
+  },
+  {
+   "fieldname": "validity_years",
+   "fieldtype": "Int",
+   "label": "Validity (in years)"
+  },
+  {
+   "fieldname": "print_format",
+   "fieldtype": "Link",
+   "label": "Print Format",
+   "options": "Print Format"
+  },
+  {
+   "default": "1",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "in_standard_filter": 1,
+   "label": "Enabled"
+  },
+  {
+   "fieldname": "column_break_10",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "link_doctype": "Gift Card",
+   "link_fieldname": "template"
+  }
+ ],
+ "modified": "2020-11-08 18:23:38.897046",
+ "modified_by": "Administrator",
+ "module": "GiftCards",
+ "name": "Gift Card Template",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

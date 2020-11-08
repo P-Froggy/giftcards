@@ -1,5 +1,4 @@
 {
- "actions": [],
  "autoname": "Prompt",
  "creation": "2020-11-04 01:52:49.032076",
  "doctype": "DocType",
@@ -99,12 +98,6 @@
   }
  ],
  "index_web_pages_for_search": 1,
- "links": [
-  {
-   "link_doctype": "Gift Card",
-   "link_fieldname": "template"
-  }
- ],
  "modified": "2020-11-08 18:23:38.897046",
  "modified_by": "Administrator",
  "module": "GiftCards",

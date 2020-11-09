@@ -38,11 +38,22 @@
   "gift_card_text",
   "print_format",
   "section_break_16",
-  "amended_from",
   "posting_date",
-  "redemption_date"
+  "redemption_date",
+  "section_break_34",
+  "amended_from"
  ],
  "fields": [
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "template",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Template",
+   "options": "Gift Card Template"
+  },
   {
    "allow_in_quick_entry": 1,
    "fetch_from": "template.type",
@@ -58,7 +69,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "allow_on_submit": 1,
    "default": "Draft",
    "fieldname": "status",
    "fieldtype": "Select",
@@ -71,18 +81,54 @@
    "reqd": 1
   },
   {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "remember_last_selected_value": 1,
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_stopped",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Is Stopped",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
    "fieldname": "value_section",
    "fieldtype": "Section Break",
    "label": "Value"
   },
   {
-   "allow_on_submit": 1,
+   "allow_in_quick_entry": 1,
+   "fetch_from": "template.value",
+   "fetch_if_empty": 1,
+   "fieldname": "target_value",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Target Value",
+   "options": "Currency",
+   "reqd": 1
+  },
+  {
    "fieldname": "current_value",
    "fieldtype": "Currency",
    "in_list_view": 1,
    "label": "Current Value",
    "no_copy": 1,
    "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "per_current_value",
+   "fieldtype": "Percent",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "% Current value",
    "read_only": 1
   },
   {
@@ -99,6 +145,14 @@
    "reqd": 1
   },
   {
+   "default": "0",
+   "fetch_from": "template.allow_partial_redemption",
+   "fetch_if_empty": 1,
+   "fieldname": "allow_partial_redemption",
+   "fieldtype": "Check",
+   "label": "Allow partial redemption"
+  },
+  {
    "fieldname": "customer_info_section",
    "fieldtype": "Section Break",
    "label": "Customer Info"
@@ -110,128 +164,6 @@
    "label": "Buying Customer",
    "mandatory_depends_on": "eval:(doc.is_paid==0)",
    "options": "Customer"
-  },
-  {
-   "description": "Needed if gift card has to be sent",
-   "fieldname": "receiving_customer",
-   "fieldtype": "Link",
-   "label": "Receiving Customer",
-   "mandatory_depends_on": "eval:(doc.has_received==0)",
-   "options": "Customer"
-  },
-  {
-   "fieldname": "section_break_13",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fetch_from": "template.gift_card_text",
-   "fetch_if_empty": 1,
-   "fieldname": "gift_card_text",
-   "fieldtype": "Text Editor",
-   "label": "Gift Card Text"
-  },
-  {
-   "fieldname": "amended_from",
-   "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "Gift Card",
-   "print_hide": 1,
-   "read_only": 1
-  },
-  {
-   "allow_in_quick_entry": 1,
-   "fieldname": "template",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "in_preview": 1,
-   "in_standard_filter": 1,
-   "label": "Template",
-   "options": "Gift Card Template"
-  },
-  {
-   "collapsible": 1,
-   "fieldname": "section_break_16",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "column_break_12",
-   "fieldtype": "Column Break"
-  },
-  {
-   "depends_on": "eval:(doc.receiving_customer)",
-   "fieldname": "receiving_address",
-   "fieldtype": "Link",
-   "label": "Receiving Address",
-   "mandatory_depends_on": "eval:(doc.receiving_customer)",
-   "options": "Address"
-  },
-  {
-   "default": "Today",
-   "fieldname": "valid_from",
-   "fieldtype": "Date",
-   "label": "Valid From"
-  },
-  {
-   "fieldname": "valid_to",
-   "fieldtype": "Date",
-   "label": "Valid To"
-  },
-  {
-   "fieldname": "validity_section",
-   "fieldtype": "Section Break",
-   "label": "Validity"
-  },
-  {
-   "fieldname": "column_break_19",
-   "fieldtype": "Column Break"
-  },
-  {
-   "default": "0",
-   "fetch_from": "template.allow_partial_redemption",
-   "fetch_if_empty": 1,
-   "fieldname": "allow_partial_redemption",
-   "fieldtype": "Check",
-   "label": "Allow partial redemption"
-  },
-  {
-   "allow_in_quick_entry": 1,
-   "fetch_from": "template.value",
-   "fetch_if_empty": 1,
-   "fieldname": "target_value",
-   "fieldtype": "Currency",
-   "in_list_view": 1,
-   "label": "Target Value",
-   "options": "Currency",
-   "reqd": 1
-  },
-  {
-   "allow_on_submit": 1,
-   "default": "0",
-   "fieldname": "is_stopped",
-   "fieldtype": "Check",
-   "hidden": 1,
-   "label": "Is Stopped",
-   "no_copy": 1,
-   "read_only": 1
-  },
-  {
-   "allow_on_submit": 1,
-   "default": "0",
-   "fieldname": "is_paid",
-   "fieldtype": "Check",
-   "label": "Is Paid",
-   "no_copy": 1,
-   "read_only_depends_on": "eval:(doc.docstatus !=0)"
-  },
-  {
-   "allow_on_submit": 1,
-   "default": "0",
-   "fieldname": "has_received",
-   "fieldtype": "Check",
-   "label": "Has received",
-   "no_copy": 1,
-   "read_only_depends_on": "eval:(doc.docstatus != 0)"
   },
   {
    "depends_on": "eval:(doc.buying_customer)",
@@ -250,12 +182,79 @@
    "options": "Address"
   },
   {
+   "default": "0",
+   "fieldname": "is_paid",
+   "fieldtype": "Check",
+   "label": "Is Paid",
+   "no_copy": 1,
+   "read_only_depends_on": "eval:(doc.docstatus !=0)"
+  },
+  {
+   "fieldname": "column_break_12",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Needed if gift card has to be sent",
+   "fieldname": "receiving_customer",
+   "fieldtype": "Link",
+   "label": "Receiving Customer",
+   "mandatory_depends_on": "eval:(doc.has_received==0)",
+   "options": "Customer"
+  },
+  {
    "depends_on": "eval:(doc.receiving_customer)",
    "fieldname": "receiving_contact",
    "fieldtype": "Link",
    "label": "Receiving Contact",
    "mandatory_depends_on": "eval:(doc.receiving_customer)",
    "options": "Contact"
+  },
+  {
+   "depends_on": "eval:(doc.receiving_customer)",
+   "fieldname": "receiving_address",
+   "fieldtype": "Link",
+   "label": "Receiving Address",
+   "mandatory_depends_on": "eval:(doc.receiving_customer)",
+   "options": "Address"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_received",
+   "fieldtype": "Check",
+   "label": "Has received",
+   "no_copy": 1,
+   "read_only_depends_on": "eval:(doc.docstatus != 0)"
+  },
+  {
+   "fieldname": "validity_section",
+   "fieldtype": "Section Break",
+   "label": "Validity"
+  },
+  {
+   "default": "Today",
+   "fieldname": "valid_from",
+   "fieldtype": "Date",
+   "label": "Valid From"
+  },
+  {
+   "fieldname": "column_break_19",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "valid_to",
+   "fieldtype": "Date",
+   "label": "Valid To"
+  },
+  {
+   "fieldname": "section_break_13",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "template.gift_card_text",
+   "fetch_if_empty": 1,
+   "fieldname": "gift_card_text",
+   "fieldtype": "Text Editor",
+   "label": "Gift Card Text"
   },
   {
    "fetch_from": "template.print_format",
@@ -266,44 +265,44 @@
    "options": "Print Format"
   },
   {
+   "collapsible": 1,
+   "fieldname": "section_break_16",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Gift Card",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
    "fieldname": "posting_date",
    "fieldtype": "Date",
-   "hidden": 1,
    "in_standard_filter": 1,
    "label": "Posting Date",
+   "no_copy": 1,
    "read_only": 1
   },
   {
    "fieldname": "redemption_date",
    "fieldtype": "Date",
-   "hidden": 1,
    "in_standard_filter": 1,
    "label": "Redemption Date",
+   "no_copy": 1,
    "read_only": 1
   },
   {
-   "fieldname": "company",
-   "fieldtype": "Link",
-   "label": "Company",
-   "options": "Company",
-   "remember_last_selected_value": 1,
-   "reqd": 1,
-   "search_index": 1
-  },
-  {
-   "allow_on_submit": 1,
-   "fieldname": "per_current_value",
-   "fieldtype": "Percent",
-   "hidden": 1,
-   "in_list_view": 1,
-   "label": "Current value (percent)",
-   "read_only": 1
+   "fieldname": "section_break_34",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2020-11-08 18:51:59.687396",
+ "modified": "2020-11-09 02:49:21.489710",
  "modified_by": "Administrator",
  "module": "GiftCards",
  "name": "Gift Card",

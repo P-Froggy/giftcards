@@ -19,13 +19,14 @@ Redeem,Einlösen
 Redeemed Value,Eingelöster Wert
 Redeem the full outstanding value of {0} {1} for this gift card?,Den vollen ausstehenden Wert von {0} {1} für diese Geschenkkarte einlösen?
 Redeemed,Eingelöst
+"redeemed <b>{0}</b>, new value is <b>{1}</b>.","löste <b>{0}</b> ein, neuer Betrag ist <b>{1}</b>."
 Redeemed value cannot be greater than the current value.,Eingelöster Wert kann nicht größer als der aktuelle Wert sein.
 Redemption date,Einlösungsdatum
 Single Purpose,Einzweck
 Target Value,Zielwert
 Target value must be a positive number.,Der Zielwert muss eine positive Zahl sein.
 The Gift Card has been received by or is sent to the customer.,Der Kunde hat die Geschenkkarte erhalten oder sie wurde an ihn versendet.
-The amount that should be redeemed.,Einzulösender Betrag.
+"The amount that should be redeemed.","Der Betrag, der eingelöst werden soll."
 Unpaid & Unsent,Unbezahlt & Ungesendet
 Unsent,Ungesendet
 Update Status,Status aktualisieren

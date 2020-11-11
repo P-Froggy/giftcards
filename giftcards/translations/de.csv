@@ -1,27 +1,30 @@
+"A billing customer, contact and address has to be set if the gift card is not paid yet.","Wenn die Geschenkkarte noch nicht bezahlt ist, muss ein Rechnungsempfänger, sein Kontakt und seine Adresse angegeben werden."
+"A shipping customer, contact and address has to be set if the gift card has to be sent to the customer.","Wenn die Geschenkkarte an den Kunden versendet werden soll, muss ein empfangender Kunde, sein Kontakt und seine Adresse angegeben werden."
 Allow partial redemption,Teileinlösung zulassen
-Buying Address,Käufer-Adresse
-Buying Contact,Käufer-Kontakt
-Buying Customer,Kaufender Kunde
+Billing Address,Rechnungsadresse
+Billing Contact,Rechnungskontakt
+Billing Customer,Rechnungsempfänger
 Create and manage gift cards.,Geschenkkarten erstellen und verwalten.
 Current value (percent),Aktueller Wert (Prozent)
+Customer Info,Kundeninformationen
 Gift Card Template,Geschenkkarten-Vorlage
 Gift Card Text,Geschenkkarten-Text
-Gift Card has been paid by the customer,Die Geschenkkarte wurde vom Kunden bezahlt
+"Gift Card has been paid by the customer.","Die Geschenkkarte wurde vom Kunden bezahlt."
 GiftCards,Geschenkkarten
 Has received,Hat erhalten
 Is stopped,Ist angehalten
 Multi Purpose,Mehrzweck
 Posting date,Ausstellungsdatum
-Receiving Address,Empfangsadresse
-Receiving Contact,Empfangender Kontakt
-Receiving Customer,Empfangender Kunde
+Shipping Address,Empfängeradresse
+Shipping Contact,Empfängerkontakt
+Shipping Customer,Leistungsempfänger
 Redeem,Einlösen
 Redeemed Value,Eingelöster Wert
 Redeem the full outstanding value of {0} {1} for this gift card?,Den vollen ausstehenden Wert von {0} {1} für diese Geschenkkarte einlösen?
 Redeemed,Eingelöst
-"redeemed <b>{0}</b>, new value is <b>{1}</b>.","löste <b>{0}</b> ein, neuer Betrag ist <b>{1}</b>."
+"redeemed {0}, new value is {1}","löste {0} ein, neuer Betrag ist {1}"
 Redeemed value cannot be greater than the current value.,Eingelöster Wert kann nicht größer als der aktuelle Wert sein.
-Redemption date,Einlösungsdatum
+Redemption Date,Einlösungsdatum
 Single Purpose,Einzweck
 Target Value,Zielwert
 Target value must be a positive number.,Der Zielwert muss eine positive Zahl sein.

@@ -11,11 +11,11 @@ frappe.ui.form.on('Gift Card', {
 		}
 
 		// Queries
-		//frm.set_query('buying_contact', erpnext.erpnext.queries.contact_query);
-		//frm.set_query('buying_address', erpnext.queries.address_query);
+		//frm.set_query('billing_contact', erpnext.erpnext.queries.contact_query);
+		//frm.set_query('billing_address', erpnext.queries.address_query);
 
-		frm.set_query('buying_contact', function (doc) {
-			if (!doc.buying_customer) {
+		frm.set_query('billing_contact', function (doc) {
+			if (!doc.billing_customer) {
 				frappe.throw(__("Please set {0}",
 					[__(frappe.meta.get_label(doc.doctype, frappe.dynamic_link.fieldname, doc.name))]));
 			}
@@ -23,13 +23,13 @@ frappe.ui.form.on('Gift Card', {
 				query: 'frappe.contacts.doctype.contact.contact.contact_query',
 				filters: {
 					link_doctype: 'Customer',
-					link_name: doc.buying_customer
+					link_name: doc.billing_customer
 				}
 			};
 		});
 
-		frm.set_query('buying_address', function (doc) {
-			if (!doc.buying_customer) {
+		frm.set_query('billing_address', function (doc) {
+			if (!doc.billing_customer) {
 				frappe.throw(__("Please set {0}",
 					[__(frappe.meta.get_label(doc.doctype, frappe.dynamic_link.fieldname, doc.name))]));
 			}
@@ -37,13 +37,13 @@ frappe.ui.form.on('Gift Card', {
 				query: 'frappe.contacts.doctype.address.address.address_query',
 				filters: {
 					link_doctype: 'Customer',
-					link_name: doc.buying_customer
+					link_name: doc.billing_customer
 				}
 			};
 		});
 
-		frm.set_query('receiving_contact', function (doc) {
-			if (!doc.receiving_customer) {
+		frm.set_query('shipping_contact', function (doc) {
+			if (!doc.shipping_customer) {
 				frappe.throw(__("Please set {0}",
 					[__(frappe.meta.get_label(doc.doctype, frappe.dynamic_link.fieldname, doc.name))]));
 			}
@@ -51,13 +51,13 @@ frappe.ui.form.on('Gift Card', {
 				query: 'frappe.contacts.doctype.contact.contact.contact_query',
 				filters: {
 					link_doctype: 'Customer',
-					link_name: doc.receiving_customer
+					link_name: doc.shipping_customer
 				}
 			};
 		});
 
-		frm.set_query('receiving_address', function (doc) {
-			if (!doc.receiving_customer) {
+		frm.set_query('shipping_address', function (doc) {
+			if (!doc.shipping_customer) {
 				frappe.throw(__("Please set {0}",
 					[__(frappe.meta.get_label(doc.doctype, frappe.dynamic_link.fieldname, doc.name))]));
 			}
@@ -65,7 +65,7 @@ frappe.ui.form.on('Gift Card', {
 				query: 'frappe.contacts.doctype.address.address.address_query',
 				filters: {
 					link_doctype: 'Customer',
-					link_name: doc.receiving_customer
+					link_name: doc.shipping_customer
 				}
 			};
 		});
@@ -210,6 +210,5 @@ frappe.ui.form.on('Gift Card', {
 				}
 			});
 	}
-
-
+	
 });

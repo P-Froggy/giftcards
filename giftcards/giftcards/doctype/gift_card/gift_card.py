@@ -9,6 +9,7 @@ from frappe import _
 # import frappe
 from frappe.model.document import Document
 from frappe.utils import today, date_diff, getdate, flt
+from frappe.contacts.doctype.address.address import get_address_display
 
 
 class GiftCard(Document):
@@ -25,17 +26,16 @@ class GiftCard(Document):
 			frappe.throw(_("Current value must be a positive number."))
 
 	def validate_customers(self):
-		if not self.is_paid and not (self.buying_customer and self.buying_contact and self.buying_address):
-			frappe.throw(_("A buying customer has to be set if the gift card is not paid yet."))
-		if not self.has_received and not (self.receiving_customer and self.receiving_contact and self.receiving_address):
-			frappe.throw(_("A receiving customer has to be set if the gift card has to be sent to the customer."))
+		if not self.is_paid and not (self.billing_customer and self.billing_contact and self.billing_address):
+			frappe.throw(_("A billing customer, contact and address has to be set if the gift card is not paid yet."))
+		if not self.has_received and not (self.shipping_customer and self.shipping_contact and self.shipping_address):
+			frappe.throw(_("A shipping customer, contact and address has to be set if the gift card has to be sent to the customer."))
 
 	def validate_dates(self):
 		if (self.valid_from and self.valid_to) and self.valid_from > self.valid_to:
 			frappe.throw(_("Valid from date has to be smaller than valid to date."))
 		elif self.valid_to and date_diff(self.valid_to, today()) < 0:
 			frappe.throw(_("Valid to date has to be in the future."))
-
 
 	def on_submit(self):
 		if self.is_paid == 1:
@@ -102,10 +102,10 @@ class GiftCard(Document):
 
 		if self.allow_partial_redemption and self.current_value > redeemed_value:
 			self.db_set('current_value', self.current_value - redeemed_value)
-			self.add_comment("Edit", _("redeemed <b>{0}</b>, new value is <b>{1}</b>.".format(
-				frappe.format(redeemed_value, dict(fieldtype="Currency", options="currency")),
-				frappe.format(self.current_value, dict(fieldtype="Currency", options="currency"))
-				)))
+			self.add_comment("Edit", _("redeemed {0}, new value is {1}").format(
+				frappe.bold(frappe.format(redeemed_value, dict(fieldtype="Currency", options="currency"))),
+				frappe.bold(frappe.format(self.current_value, dict(fieldtype="Currency", options="currency")))
+				))
 		else:
 			self.db_set('current_value', 0)
 

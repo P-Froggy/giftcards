@@ -20,14 +20,14 @@
   "currency",
   "allow_partial_redemption",
   "customer_info_section",
-  "buying_customer",
-  "buying_contact",
-  "buying_address",
+  "billing_customer",
+  "billing_contact",
+  "billing_address",
   "is_paid",
   "column_break_12",
-  "receiving_customer",
-  "receiving_contact",
-  "receiving_address",
+  "shipping_customer",
+  "shipping_contact",
+  "shipping_address",
   "has_received",
   "validity_section",
   "valid_from",
@@ -38,6 +38,7 @@
   "print_format",
   "section_break_16",
   "posting_date",
+  "column_break_37",
   "redemption_date",
   "section_break_34",
   "amended_from"
@@ -157,64 +158,8 @@
    "label": "Customer Info"
   },
   {
-   "description": "Needed if gift card is not yet paid",
-   "fieldname": "buying_customer",
-   "fieldtype": "Link",
-   "label": "Buying Customer",
-   "mandatory_depends_on": "eval:(doc.is_paid==0)",
-   "options": "Customer"
-  },
-  {
-   "depends_on": "eval:(doc.buying_customer)",
-   "fieldname": "buying_contact",
-   "fieldtype": "Link",
-   "label": "Buying Contact",
-   "mandatory_depends_on": "eval:(doc.buying_customer)",
-   "options": "Contact"
-  },
-  {
-   "depends_on": "eval:(doc.buying_customer)",
-   "fieldname": "buying_address",
-   "fieldtype": "Link",
-   "label": "Buying Address",
-   "mandatory_depends_on": "eval:(doc.buying_customer)",
-   "options": "Address"
-  },
-  {
-   "default": "0",
-   "fieldname": "is_paid",
-   "fieldtype": "Check",
-   "label": "Is Paid",
-   "no_copy": 1,
-   "read_only_depends_on": "eval:(doc.docstatus !=0)"
-  },
-  {
    "fieldname": "column_break_12",
    "fieldtype": "Column Break"
-  },
-  {
-   "description": "Needed if gift card has to be sent",
-   "fieldname": "receiving_customer",
-   "fieldtype": "Link",
-   "label": "Receiving Customer",
-   "mandatory_depends_on": "eval:(doc.has_received==0)",
-   "options": "Customer"
-  },
-  {
-   "depends_on": "eval:(doc.receiving_customer)",
-   "fieldname": "receiving_contact",
-   "fieldtype": "Link",
-   "label": "Receiving Contact",
-   "mandatory_depends_on": "eval:(doc.receiving_customer)",
-   "options": "Contact"
-  },
-  {
-   "depends_on": "eval:(doc.receiving_customer)",
-   "fieldname": "receiving_address",
-   "fieldtype": "Link",
-   "label": "Receiving Address",
-   "mandatory_depends_on": "eval:(doc.receiving_customer)",
-   "options": "Address"
   },
   {
    "default": "0",
@@ -296,12 +241,70 @@
   {
    "fieldname": "section_break_34",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "billing_customer",
+   "fieldtype": "Link",
+   "label": "Billing Customer",
+   "mandatory_depends_on": "eval:(doc.is_paid==0)",
+   "options": "Customer"
+  },
+  {
+   "depends_on": "eval:(doc.billing_customer)",
+   "fieldname": "billing_contact",
+   "fieldtype": "Link",
+   "label": "Billing Contact",
+   "mandatory_depends_on": "eval:(doc.billing_customer)",
+   "options": "Contact"
+  },
+  {
+   "depends_on": "eval:(doc.billing_customer)",
+   "fieldname": "billing_address",
+   "fieldtype": "Link",
+   "label": "Billing Address",
+   "mandatory_depends_on": "eval:(doc.billing_customer)",
+   "options": "Address"
+  },
+  {
+   "fieldname": "shipping_customer",
+   "fieldtype": "Link",
+   "label": "Shipping Customer",
+   "mandatory_depends_on": "eval:(doc.has_received==0)",
+   "options": "Customer"
+  },
+  {
+   "depends_on": "eval:(doc.shipping_customer)",
+   "fieldname": "shipping_contact",
+   "fieldtype": "Link",
+   "label": "Shipping Contact",
+   "mandatory_depends_on": "eval:(doc.shipping_customer)",
+   "options": "Contact"
+  },
+  {
+   "depends_on": "eval:(doc.shipping_customer)",
+   "fieldname": "shipping_address",
+   "fieldtype": "Link",
+   "label": "Shipping Address",
+   "mandatory_depends_on": "eval:(doc.shipping_customer)",
+   "options": "Address"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_paid",
+   "fieldtype": "Check",
+   "label": "Is Paid",
+   "no_copy": 1,
+   "read_only_depends_on": "eval:(doc.docstatus !=0)"
+  },
+  {
+   "fieldname": "column_break_37",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2020-11-09 02:49:21.489710",
+ "modified": "2020-11-11 20:08:05.904016",
  "modified_by": "Administrator",
  "module": "GiftCards",
  "name": "Gift Card",

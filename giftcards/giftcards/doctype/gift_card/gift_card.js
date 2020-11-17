@@ -73,32 +73,39 @@ frappe.ui.form.on('Gift Card', {
 
 	refresh: function (frm) {
 		if (frm.doc.docstatus == 1 && frm.doc.status != 'Redeemed') {
-			if (frm.doc.is_stopped == 0 && (frm.doc.is_paid == 0 || frm.doc.has_received == 0)) {
-				frm.add_custom_button(__('Update Status'), function () {
-					frm.trigger("update_status");
-				});
-			}
-			if (frm.doc.is_stopped == 0 && frm.doc.current_value > 0 && frm.doc.has_received == 1) {
-				frm.add_custom_button(__('Redeem'), function () {
-					frm.trigger("redeem_gift_card");
-				});
-			}
-			frm.add_custom_button(frm.doc.is_stopped == 0 ? __('Stop') : __('Resume'),
-				() => frm.call({
-					doc: frm.doc,
-					method: 'stop_gift_card',
-					freeze: true,
-					callback: () => {
-						//frm.refresh();
-						frm.reload_doc();
-					}
-				})
-			);
+			if (frm.has_perm('write') && frm.doc.is_stopped == 0) {
+				if (frm.doc.is_paid == 0 || frm.doc.has_received == 0) {
+					frm.add_custom_button(__('Update Status'), function () {
+						frm.trigger("update_status");
+					});
+				}
 
+				if (frm.doc.current_value > 0 && frm.doc.has_received == 1) {
+					frm.add_custom_button(__('Redeem'), function () {
+						frm.trigger("redeem_gift_card");
+					});
+				}
+			}
+
+			if (frappe.perm.has_perm(frm.doctype, 1, 'write') == 1) {
+				frm.add_custom_button(frm.doc.is_stopped == 0 ? __('Stop') : __('Resume'),
+					() => frm.call({
+						doc: frm.doc,
+						method: 'stop_gift_card',
+						freeze: true,
+						callback: () => {
+							//frm.refresh();
+							frm.reload_doc();
+						}
+					})
+				);
+
+			}
 		}
 	},
 
 	update_status: function (frm) {
+		let paid_read_only = (frm.doc.is_paid == 1 || frappe.perm.has_perm(frm.doctype, 1, 'write') == 0) ? 1 : 0;
 		let d = new frappe.ui.Dialog({
 			title: __('Update Status'),
 			fields: [
@@ -106,7 +113,8 @@ frappe.ui.form.on('Gift Card', {
 					label: __('Is Paid'),
 					fieldname: 'is_paid',
 					fieldtype: 'Check',
-					read_only: frm.doc.is_paid == 1 ? 1 : 0,
+					//read_only: frm.doc.is_paid == 1 ? 1 : 0,
+					read_only: paid_read_only,
 					default: frm.doc.is_paid,
 					description: __('Gift Card has been paid by the customer.')
 				},
@@ -123,19 +131,22 @@ frappe.ui.form.on('Gift Card', {
 			primary_action(values) {
 				//console.log(values);
 				d.hide();
-				frm.call({
-					doc: frm.doc,
-					method: 'update_status_dialog',
-					args: {
-						is_paid: values.is_paid,
-						has_received: values.has_received
-					},
-					freeze: true,
-					callback: () => {
-						//frm.refresh();
-						frm.reload_doc();
-					}
-				})
+				if (values.is_paid == 1 || values.has_received == 1) {
+					frm.call({
+						doc: frm.doc,
+						method: 'update_status_dialog',
+						args: {
+							is_paid: values.is_paid,
+							has_received: values.has_received
+						},
+						freeze: true,
+						callback: () => {
+							//frm.refresh();
+							frm.reload_doc();
+						}
+					})
+				}
+
 			}
 		});
 		d.show();
@@ -210,5 +221,5 @@ frappe.ui.form.on('Gift Card', {
 				}
 			});
 	}
-	
+
 });

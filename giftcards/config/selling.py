@@ -14,5 +14,17 @@ def get_data():
 				}				
 			]
 		},
+
+		{
+			"label": _("Items and Pricing"),
+			"icon": "fa fa-star",
+			"items": [
+				{
+					"type": "doctype",
+					"name": "Gift Card Template",
+					"description": _("Create and manage gift card templates."),
+				}				
+			]
+		},
 		
 	]

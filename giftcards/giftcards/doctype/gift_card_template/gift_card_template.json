@@ -98,12 +98,6 @@
   }
  ],
  "index_web_pages_for_search": 1,
- "links": [
-  {
-   "link_doctype": "Gift Card",
-   "link_fieldname": "template"
-  }
- ],
  "modified": "2020-11-11 21:23:53.390199",
  "modified_by": "Administrator",
  "module": "GiftCards",

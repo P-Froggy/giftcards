@@ -109,19 +109,23 @@ class GiftCard(Document):
 	@frappe.whitelist()
 	def redeem(self, redeemed_value=0):
 		self.check_permission(permtype='write')
-
-		if redeemed_value and self.current_value < redeemed_value:
-			frappe.throw(_("Redeemed value cannot be greater than the current value."))
-
-		if self.allow_partial_redemption and self.current_value > redeemed_value:
+	
+		if self.allow_partial_redemption and 0 < redeemed_value < self.current_value:
 			self.db_set('current_value', self.current_value - redeemed_value)
 			self.add_comment("Edit", _("redeemed {0}, new value is {1}").format(
 				frappe.bold(frappe.format(redeemed_value, dict(fieldtype="Currency", options="currency"))),
 				frappe.bold(frappe.format(self.current_value, dict(fieldtype="Currency", options="currency")))
-				))
-		else:
+			))
+
+		elif self.allow_partial_redemption == 0 or redeemed_value == self.current_value:
 			self.db_set('current_value', 0)
 			if not self.redemption_date:
 				self.db_set('redemption_date', today())
+
+		else:
+			frappe.throw(_("The redemption value must be between {0} and {1}.").format(
+				frappe.bold(frappe.format(0, dict(fieldtype="Currency", options="currency"))),
+				frappe.bold(frappe.format(self.current_value, dict(fieldtype="Currency", options="currency")))
+			))
 
 		self.set_status(update=True)

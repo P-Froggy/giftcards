@@ -5,11 +5,6 @@ frappe.ui.form.on('Gift Card', {
 	onload: function (frm) {
 		var doc = frm.doc;
 
-		// Print Format
-		if (!frm.meta.default_print_format) {
-			frm.meta.default_print_format = frm.doc.print_format;
-		}
-
 		// Queries
 		//frm.set_query('billing_contact', erpnext.erpnext.queries.contact_query);
 		//frm.set_query('billing_address', erpnext.queries.address_query);
@@ -69,6 +64,14 @@ frappe.ui.form.on('Gift Card', {
 				}
 			};
 		});
+
+		frm.set_query('print_format', function (doc) {
+			return {
+				filters: {
+					doc_type: 'Gift Card',
+				}
+			};
+		});
 	},
 
 	refresh: function (frm) {
@@ -101,6 +104,11 @@ frappe.ui.form.on('Gift Card', {
 				);
 
 			}
+		}
+
+		// Print Format
+		if (!frm.meta.default_print_format) {
+			frm.meta.default_print_format = frm.doc.print_format;
 		}
 	},
 

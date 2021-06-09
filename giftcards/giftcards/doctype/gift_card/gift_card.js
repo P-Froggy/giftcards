@@ -164,19 +164,20 @@ frappe.ui.form.on('Gift Card', {
 	redeem_gift_card: function (frm) {
 		if (frm.doc.allow_partial_redemption == 0) {
 
-			frappe.confirm(__('Redeem the full outstanding value of {0} {1} for this gift card?', [frm.doc.current_value, frm.doc.currency]),
-				() => {
-					// action to perform if Yes is selected
-					frm.call({
-						doc: frm.doc,
-						method: 'redeem',
-						freeze: true,
-						callback: () => {
-							//frm.refresh();
-							frm.reload_doc();
-						}
-					})
+			frappe.confirm(__('Redeem the full outstanding value of {0} for this gift card?', [
+				frappe.format(frm.doc.current_value, { fieldtype: 'Currency', options: 'currency' }, { inline: true })
+			]), () => {
+				// action to perform if Yes is selected
+				frm.call({
+					doc: frm.doc,
+					method: 'redeem',
+					freeze: true,
+					callback: () => {
+						//frm.refresh();
+						frm.reload_doc();
+					}
 				})
+			})
 
 		} else {
 			let d = new frappe.ui.Dialog({
@@ -195,20 +196,27 @@ frappe.ui.form.on('Gift Card', {
 				],
 				primary_action_label: __('Submit'),
 				primary_action(values) {
-					//console.log(values);
 					d.hide();
-					frm.call({
-						doc: frm.doc,
-						method: 'redeem',
-						args: {
-							redeemed_value: values.redeemed_value
-						},
-						freeze: true,
-						callback: () => {
-							//frm.refresh();
-							frm.reload_doc();
-						}
-					})
+
+					frappe.confirm(__('Redeem {0} for this gift card? The remaining value will be {1}.', [
+						frappe.format(values.redeemed_value, { fieldtype: 'Currency', options: 'currency' }, { inline: true }),
+						frappe.format(frm.doc.current_value - values.redeemed_value, { fieldtype: 'Currency', options: 'currency' }, { inline: true })
+					]), () => {
+
+						//console.log(values);
+						frm.call({
+							doc: frm.doc,
+							method: 'redeem',
+							args: {
+								redeemed_value: values.redeemed_value
+							},
+							freeze: true,
+							callback: () => {
+								//frm.refresh();
+								frm.reload_doc();
+							}
+						});
+					});
 				}
 			});
 			d.show();

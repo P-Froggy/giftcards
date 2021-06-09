@@ -14,6 +14,10 @@ from frappe.contacts.doctype.address.address import get_address_display
 
 class GiftCard(Document):
 
+	#def autoname(self):
+	#	name_hash = frappe.generate_hash("Lol", 10).upper()
+	#	self.name = "SAL-GFC-" + name_hash[0:5] + "-" + name_hash[5:10]
+
 	def validate(self):
 		self.validate_values()
 		self.validate_customers()
@@ -78,7 +82,7 @@ class GiftCard(Document):
 		if update:
 			old_doc = self.get_doc_before_save()
 			if old_doc and old_doc.status != self.status:
-				self.add_comment("Label", _(self.status))
+				self.add_comment("Info", _(self.status))
 			self.db_set('status', self.status, update_modified = update_modified)
 			self.db_set('per_current_value', self.per_current_value)
 
@@ -112,7 +116,7 @@ class GiftCard(Document):
 	
 		if self.allow_partial_redemption and 0 < redeemed_value < self.current_value:
 			self.db_set('current_value', self.current_value - redeemed_value)
-			self.add_comment("Edit", _("redeemed {0}, new value is {1}").format(
+			self.add_comment("Info", _("redeemed {0}, new value is {1}").format(
 				frappe.bold(frappe.format(redeemed_value, dict(fieldtype="Currency", options="currency"))),
 				frappe.bold(frappe.format(self.current_value, dict(fieldtype="Currency", options="currency")))
 			))

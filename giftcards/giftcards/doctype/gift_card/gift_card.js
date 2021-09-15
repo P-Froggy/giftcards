@@ -165,7 +165,7 @@ frappe.ui.form.on('Gift Card', {
 		if (frm.doc.allow_partial_redemption == 0) {
 
 			frappe.confirm(__('Redeem the full outstanding value of {0} for this gift card?', [
-				frappe.format(frm.doc.current_value, { fieldtype: 'Currency', options: 'currency' }, { inline: true })
+				"<strong>" + frappe.format(frm.doc.current_value, { fieldtype: 'Currency', options: 'currency' }, { inline: true }) + "</strong>"
 			]), () => {
 				// action to perform if Yes is selected
 				frm.call({
@@ -199,8 +199,8 @@ frappe.ui.form.on('Gift Card', {
 					d.hide();
 
 					frappe.confirm(__('Redeem {0} for this gift card? The remaining value will be {1}.', [
-						frappe.format(values.redeemed_value, { fieldtype: 'Currency', options: 'currency' }, { inline: true }),
-						frappe.format(frm.doc.current_value - values.redeemed_value, { fieldtype: 'Currency', options: 'currency' }, { inline: true })
+						"<strong>" + frappe.format(values.redeemed_value, { fieldtype: 'Currency', options: 'currency' }, { inline: true }) + "</strong>",
+						"<strong>" + frappe.format(frm.doc.current_value - values.redeemed_value, { fieldtype: 'Currency', options: 'currency' }, { inline: true }) + "</strong>"
 					]), () => {
 
 						//console.log(values);

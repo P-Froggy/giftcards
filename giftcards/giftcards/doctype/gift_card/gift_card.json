@@ -1,5 +1,7 @@
 {
+ "actions": [],
  "allow_import": 1,
+ "autoname": "SAL-GFT-.YYYY.-.#####",
  "creation": "2020-11-04 01:47:30.293918",
  "doctype": "DocType",
  "document_type": "Document",
@@ -8,6 +10,7 @@
  "field_order": [
   "template",
   "type",
+  "code",
   "column_break_3",
   "status",
   "company",
@@ -299,12 +302,19 @@
   {
    "fieldname": "column_break_37",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "code",
+   "fieldtype": "Data",
+   "label": "Code",
+   "read_only": 1,
+   "unique": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2020-11-17 00:45:50.199591",
+ "modified": "2021-06-09 16:40:08.691381",
  "modified_by": "Administrator",
  "module": "GiftCards",
  "name": "Gift Card",
@@ -379,5 +389,6 @@
  "search_fields": "status",
  "sort_field": "modified",
  "sort_order": "DESC",
+ "title_field": "code",
  "track_changes": 1
 }

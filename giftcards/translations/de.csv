@@ -21,7 +21,8 @@ Shipping Contact,Empfängerkontakt
 Shipping Customer,Leistungsempfänger
 Redeem,Einlösen
 Redeemed Value,Eingelöster Wert
-Redeem the full outstanding value of {0} {1} for this gift card?,Den vollen ausstehenden Wert von {0} {1} für diese Geschenkkarte einlösen?
+Redeem the full outstanding value of {0} for this gift card?,Den vollen ausstehenden Wert von {0} für diese Geschenkkarte einlösen?
+"Redeem {0} for this gift card? The remaining value will be {1}.","Möchten Sie {0} dieser Geschenkkarte einlösen? Der Restwert wird {1} betragen."
 Redeemed,Eingelöst
 "redeemed {0}, new value is {1}","löste {0} ein, neuer Betrag ist {1}"
 "The redemption value must be between {0} and {1}.","Der einzulösende Wert muss zwischen {0} und {1} liegen."

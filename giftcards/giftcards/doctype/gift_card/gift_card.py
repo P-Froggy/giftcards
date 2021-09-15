@@ -42,6 +42,10 @@ class GiftCard(Document):
 			frappe.throw(_("Valid to date has to be in the future."))
 
 	def on_submit(self):
+		# Generate unique Hash-Code
+		if not self.code:
+			self.db_set('code', frappe.generate_hash(self.doctype, 10), update_modified=False)
+		
 		if self.is_paid == 1 and not self.current_value:
 			self.db_set('current_value', self.target_value)
 		if not self.posting_date:
